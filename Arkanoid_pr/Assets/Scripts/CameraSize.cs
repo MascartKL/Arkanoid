@@ -12,6 +12,7 @@ public class CameraSize : MonoBehaviour
     {
         CameraResize();
     }
+
     private void CameraResize()
     {
         float screenRatio = (float)Screen.width / (float)Screen.height;
@@ -32,4 +33,5 @@ public class CameraSize : MonoBehaviour
     {
         Camera.main.orthographicSize = TargetSizeY / HalfSize * differentSize;
     }
+
 }
