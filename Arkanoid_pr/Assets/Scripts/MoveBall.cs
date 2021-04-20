@@ -22,7 +22,7 @@ public class MoveBall : MonoBehaviour
 		{
             dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             active = true;
-           rb.AddForce(dir * BallSpeed);  
+            rb.AddForce(dir * BallSpeed);   
         }
     }
 
