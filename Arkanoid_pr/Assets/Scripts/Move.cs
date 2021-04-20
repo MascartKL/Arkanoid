@@ -10,11 +10,11 @@ public class Move : MonoBehaviour
 
     void Update()
     {
-        if (leftButton.isPressed && checkBord())
+        if (leftButton.isPressed && checkBord() && transform.position.x > -1.2f)
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
         }
-        if (rightButton.isPressed && checkBord())
+        if (rightButton.isPressed && checkBord() && transform.position.x < 1.2f)
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
         }

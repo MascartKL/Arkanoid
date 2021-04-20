@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CameraSize : MonoBehaviour
 {
-    private const float TargetSizeX = 1280.0f;
-    private const float TargetSizeY = 720.0f;
-    private const float HalfSize = 200.0f; // половина высоты в пикселях
+    private const float TargetSizeX = 1280.0f;//720.0f;//1280.0f;
+    private const float TargetSizeY = 720.0f;//1280.0f;//720.0f;
+    private const float HalfSize = 570.0f; // коэф подобрал методом научного тыка
 
     private void Awake()
     {
