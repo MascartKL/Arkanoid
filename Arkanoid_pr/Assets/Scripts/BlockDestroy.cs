@@ -4,30 +4,35 @@ using UnityEngine;
 
 public class BlockDestroy : MonoBehaviour
 {
-    private short hp = 3;
+    BlockDestroy(short hp)
+	{
+        this.hp = hp;
+	}
+     
+    private short hp = 2;
     public GameObject ball;
-
-
-    void Start()
-    {
-        
-    }
-
+    public Sprite[] sprites = new Sprite[2];
     
     void Update()
     {
         if(hp <= 0)
 		{
-            Destroy(this.gameObject);
+            Debug.Log("Delete");
+            //Destroy(this.gameObject);
 		}
     }
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-        Debug.Log("Он во мне...");
         if (collision.gameObject.name == "Ball")
         {
-            hp--;
+            if(--hp > 0)
+            ChangeSprite();
         }
     }
+
+    private void ChangeSprite()
+	{
+        gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];
+	}
 }

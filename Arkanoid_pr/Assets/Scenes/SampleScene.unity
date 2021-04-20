@@ -617,6 +617,7 @@ GameObject:
   - component: {fileID: 427943519}
   - component: {fileID: 427943518}
   - component: {fileID: 427943517}
+  - component: {fileID: 427943522}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -739,6 +740,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &427943522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427943516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c7cda3ae15a97846a65ccbb47c49acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObject: {fileID: 5947119701135634696, guid: 95375f31297671145a828208c1d2d9a1, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,6 +1175,7 @@ GameObject:
   - component: {fileID: 1153063080}
   - component: {fileID: 1153063079}
   - component: {fileID: 1153063078}
+  - component: {fileID: 1153063081}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -1227,7 +1242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153063075}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18, y: -1.37, z: 0}
+  m_LocalPosition: {x: -0.73, y: -2.25, z: 0}
   m_LocalScale: {x: 1.3, y: 0.3, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1295,6 +1310,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.65, y: 0.7}
   m_EdgeRadius: 0
+--- !u!114 &1153063081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153063075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c7cda3ae15a97846a65ccbb47c49acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObject: {fileID: 5947119701135634696, guid: 95375f31297671145a828208c1d2d9a1, type: 3}
 --- !u!1 &1533606363
 GameObject:
   m_ObjectHideFlags: 0
