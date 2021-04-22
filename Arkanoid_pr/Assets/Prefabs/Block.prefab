@@ -131,3 +131,5 @@ MonoBehaviour:
   - {fileID: 1343876851098480596, guid: f4aab03d3a8f3904b99e58f21b468ab1, type: 3}
   - {fileID: -4841102139434745330, guid: f4aab03d3a8f3904b99e58f21b468ab1, type: 3}
   - {fileID: -5123777263245864886, guid: f4aab03d3a8f3904b99e58f21b468ab1, type: 3}
+  BonusSprites:
+  - {fileID: 158207561026624206, guid: bee03bdd557bb624fab70836e7e26780, type: 3}

@@ -35,4 +35,13 @@ public class Move : MonoBehaviour
         }
         return true;
 	}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Bonus")
+        {
+            Destroy(collision.gameObject);
+            Debug.Log("Bonus ");
+        }
+    }
 }

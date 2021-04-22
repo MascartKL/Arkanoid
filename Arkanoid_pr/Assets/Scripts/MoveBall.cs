@@ -18,6 +18,7 @@ public class MoveBall : MonoBehaviour
     
     void Update()
     {
+    
         if (Input.GetMouseButtonDown(0)&& !active)
 		{
             dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;

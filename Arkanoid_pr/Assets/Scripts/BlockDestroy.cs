@@ -7,11 +7,18 @@ public class BlockDestroy : MonoBehaviour
 
     private int hp;
     private int BlockValue;
+    
+    private float MinChance = 0.8f;
+    private float MaxChance = 1.5f;
+    private float DropRate = 1f;
+
     public GameObject ball;
 
     public Sprite[] MainSprites = new Sprite[3];
 
     public Sprite[] DamageSprites = new Sprite[3];
+
+    public GameObject[] BonusSprites = new GameObject[1];
 
     private void Awake()
     {
@@ -30,6 +37,7 @@ public class BlockDestroy : MonoBehaviour
 		{
             Destroy(this.gameObject);
             Score.score += BlockValue;
+            Bonusdrop();
 		}
     }
 
@@ -55,7 +63,6 @@ public class BlockDestroy : MonoBehaviour
 
                 case 1:
                     gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[2];
-                    Debug.Log("test");
                     break;
                 case 2:
                     gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[1];
@@ -81,5 +88,12 @@ public class BlockDestroy : MonoBehaviour
                 break;
 
         }
+    }
+
+    private void Bonusdrop()
+    {
+        Vector3 SpawnPoint = transform.position;
+        if (Random.Range(MinChance, MaxChance) > DropRate)
+             Instantiate(BonusSprites[0], SpawnPoint, Quaternion.identity );
     }
 }
