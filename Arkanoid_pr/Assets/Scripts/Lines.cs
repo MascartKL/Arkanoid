@@ -8,25 +8,26 @@ public class Lines : MonoBehaviour
 	{
         this.countBlocks = countBlocks;
         this.PosY = PosY;
-        this.gameObject = gameObject;
+        block = gameObject;
 	}
 
-    private GameObject gameObject;
-    public byte countBlocks;
-    private float PosY;
+    private GameObject block;
     private Vector3 position;
+
+    public List<GameObject> gameObjects = new List<GameObject>();
+    private byte countBlocks;
+    private float PosY;
 
 
 
     public void CreateLinesBlock()
 	{
-        for(int i = 0; i < countBlocks; i++)
+        for(byte i = 0; i < countBlocks; i++)
 		{
-            position.x = (float)Screen.width / 240 * -1 + i*0.6f;
+            position.x = 1.5f * -1 + i*0.6f;
             position.z = 0;
             position.y = PosY;
-            Instantiate(gameObject, position, Quaternion.identity);
+            gameObjects.Add(Instantiate(block, position, Quaternion.identity));
         }
     }
-    
 }
