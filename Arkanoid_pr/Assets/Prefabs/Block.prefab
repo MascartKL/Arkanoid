@@ -8,11 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2197292593504556}
+  - component: {fileID: 7142296792411637795}
   - component: {fileID: 2197292593504559}
   - component: {fileID: 2197292593504558}
   - component: {fileID: 2197292593504553}
   - component: {fileID: 2372977096112513567}
+  - component: {fileID: 5532041497484199371}
   m_Layer: 0
   m_Name: Block
   m_TagString: Untagged
@@ -20,20 +21,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2197292593504556
-Transform:
+--- !u!224 &7142296792411637795
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2197292593504552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -12.070002, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -12.070002}
+  m_SizeDelta: {x: 0.58, y: 0.28}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &2197292593504559
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947be3d08244b124c8457dda3e6bb68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
   ball: {fileID: 0}
   MainSprites:
   - {fileID: 690696643596080731, guid: 65e3a044eb0a73d40a557747249650ef, type: 3}
@@ -144,3 +151,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0685a24883e5ed246a32089fa742b3f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!222 &5532041497484199371
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2197292593504552}
+  m_CullTransparentMesh: 1

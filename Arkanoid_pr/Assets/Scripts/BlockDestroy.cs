@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
- public class BlockDestroy : MonoBehaviour
+public class BlockDestroy : MonoBehaviour
 {
     private int hp;
     private int BlockValue;
+
+   
 
     public static byte numberLine;
 
@@ -17,7 +20,8 @@ using UnityEngine;
 
     private void Awake()
     {
-        hp = Random.Range(1, 2); //По идее должно стоять от 1 до 3, но в этом случае он не спавнит третий вид блоков  ¯\_(ツ)_/¯ 
+
+        hp = Random.Range(1, 4); //По идее должно стоять от 1 до 3, но в этом случае он не спавнит третий вид блоков  ¯\_(ツ)_/¯ 
         if(gameObject.transform.position.y == 3.3f)
 		{
             numberLine = 0;
@@ -43,10 +47,18 @@ using UnityEngine;
         if(hp <= 0)
 		{
             CreateLineBlocks.BlockInLinesRemove(numberLine, this.gameObject);
-            Destroy(gameObject);
+
+            TextView txtView = new TextView(BlockValue.ToString(),gameObject.transform.position);
+            txtView.moveText();
+            
+
             Score.score += BlockValue;
-		}
+
+            Destroy(gameObject);
+        }
     }
+
+   
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{

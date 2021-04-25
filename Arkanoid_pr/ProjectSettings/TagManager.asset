@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bonus
   - Ball
+  - Value
   layers:
   - Default
   - TransparentFX

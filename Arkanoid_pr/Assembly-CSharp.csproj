@@ -58,15 +58,19 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\DeathZone.cs" />
     <Compile Include="Assets\Scripts\Lines.cs" />
+    <Compile Include="Assets\Scripts\TextView.cs" />
     <Compile Include="Assets\Scripts\MoveBall.cs" />
+    <Compile Include="Assets\Scripts\Menu.cs" />
     <Compile Include="Assets\Scripts\ScaleBox.cs" />
     <Compile Include="Assets\Scripts\PressedButton.cs" />
     <Compile Include="Assets\Scripts\Score.cs" />
     <Compile Include="Assets\Scripts\CameraSize.cs" />
     <Compile Include="Assets\Scripts\Move.cs" />
+    <Compile Include="Assets\Scripts\GameStopButton.cs" />
+    <Compile Include="Assets\Scripts\NumberBlocks.cs" />
     <Compile Include="Assets\Scripts\BlockDestroy.cs" />
     <Compile Include="Assets\Scripts\CreateLineBlocks.cs" />
-    <Compile Include="Assets\Scripts\NumberBlocks.cs" />
+    <Compile Include="Assets\Scripts\Controller.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

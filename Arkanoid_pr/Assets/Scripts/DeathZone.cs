@@ -6,7 +6,7 @@ public class DeathZone : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ball" || collision.gameObject.tag == "Bonus")
+        if (collision.gameObject.name == "Ball" || collision.gameObject.name == "Bonus")
         {
             Destroy(collision.gameObject);
         }

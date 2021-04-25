@@ -27,9 +27,6 @@ public class MoveBall : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(BoxCollider2D DeatZone)
-    {
-        Destroy(gameObject);
-    }
+   
 
 }
