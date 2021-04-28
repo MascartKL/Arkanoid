@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,8 +8,8 @@ public class BlockDestroy : MonoBehaviour
 {
     private int hp;
     private int BlockValue;
+    //private Object bonusLenght;
 
-   
 
     public static byte numberLine;
 
@@ -20,7 +21,8 @@ public class BlockDestroy : MonoBehaviour
 
     private void Awake()
     {
-
+       // bonusLenght = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/BonusLenght.prefab", typeof(GameObject));
+        //bonusLenght = Resources.Load<GameObject>("Assets/Prefabs/BonusLenght");
         hp = Random.Range(1, 4); //По идее должно стоять от 1 до 3, но в этом случае он не спавнит третий вид блоков  ¯\_(ツ)_/¯ 
         if(gameObject.transform.position.y == 3.3f)
 		{
@@ -54,17 +56,30 @@ public class BlockDestroy : MonoBehaviour
 
             Score.score += BlockValue;
 
+            spavnBonus();
+
             Destroy(gameObject);
         }
     }
 
-   
+   private void spavnBonus()
+	{
+		if (Random.Range(1, 6) == 3)
+		{
+			Instantiate(Resources.Load("BonusLenght"), gameObject.transform.position, Quaternion.identity);
+		}
 
-	private void OnCollisionEnter2D(Collision2D collision)
+		if (Random.Range(1, 10) == 5)
+		{
+			Instantiate(Resources.Load("BonusDamage"), gameObject.transform.position, Quaternion.identity);
+		}
+	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
 	{
         if (collision.gameObject.name == "Ball")
         {
-              hp--;
+              hp -= MoveBall.damageBall;
         }
     }
 

@@ -5,11 +5,12 @@ using UnityEngine;
 public class MoveBall : MonoBehaviour
 {
     Vector2 dir;
-
     bool active = false;
-    Vector2 velocity;
-    public Rigidbody2D rb;
+
+    private Rigidbody2D rb;
     private float BallSpeed = 100f;
+
+    public static int damageBall = 1;
 
     void Start()
     {
@@ -31,7 +32,14 @@ public class MoveBall : MonoBehaviour
     {
         if (collision.gameObject.name == "Board")
         {
-            rb.velocity = new Vector2(gameObject.transform.position.x * -1f, gameObject.transform.position.y);
+            if(Random.Range(1,3) == 1)
+			{
+                rb.velocity = new Vector2(gameObject.transform.position.x * -1f, gameObject.transform.position.y);
+            }
+            else
+			{
+                rb.velocity = new Vector2(gameObject.transform.position.x * 1f, gameObject.transform.position.y);
+            }
         }
     }
 }
