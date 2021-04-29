@@ -56,20 +56,19 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\DeathZone.cs" />
-    <Compile Include="Assets\Scripts\Lines.cs" />
-    <Compile Include="Assets\Scripts\TextView.cs" />
-    <Compile Include="Assets\Scripts\MoveBall.cs" />
-    <Compile Include="Assets\Scripts\Controller.cs" />
-    <Compile Include="Assets\Scripts\Menu.cs" />
-    <Compile Include="Assets\Scripts\ScaleBox.cs" />
-    <Compile Include="Assets\Scripts\PressedButton.cs" />
-    <Compile Include="Assets\Scripts\Score.cs" />
-    <Compile Include="Assets\Scripts\CameraSize.cs" />
-    <Compile Include="Assets\Scripts\Move.cs" />
-    <Compile Include="Assets\Scripts\GameStopButton.cs" />
-    <Compile Include="Assets\Scripts\BlockDestroy.cs" />
-    <Compile Include="Assets\Scripts\CreateLineBlocks.cs" />
+    <Compile Include="Assets\Scripts\Ball\DeathZone.cs" />
+    <Compile Include="Assets\Scripts\LineBlock\Lines.cs" />
+    <Compile Include="Assets\Scripts\UI\TextView.cs" />
+    <Compile Include="Assets\Scripts\Ball\MoveBall.cs" />
+    <Compile Include="Assets\Scripts\ScriptsScene\Controller.cs" />
+    <Compile Include="Assets\Scripts\ScriptsScene\Menu.cs" />
+    <Compile Include="Assets\Scripts\Border\PressedButton.cs" />
+    <Compile Include="Assets\Scripts\UI\Score.cs" />
+    <Compile Include="Assets\Scripts\UI\CameraSize.cs" />
+    <Compile Include="Assets\Scripts\Border\Move.cs" />
+    <Compile Include="Assets\Scripts\ScriptsScene\GameStopButton.cs" />
+    <Compile Include="Assets\Scripts\Ball\BlockDestroy.cs" />
+    <Compile Include="Assets\Scripts\LineBlock\CreateLineBlocks.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
