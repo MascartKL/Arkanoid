@@ -4,11 +4,42 @@ using UnityEngine;
 
 public class MoveBall : MonoBehaviour
 {
-    Vector2 dir;
-    bool active = false;
+    private Vector2 dir;
+
+	private Vector2 Svdir
+	{
+		get
+		{
+			return dir;
+		}
+		set
+		{
+            if (value.y > 2f)
+            {
+              value.y = 2f;
+            }
+            if(value.y < 1f)
+			{
+               value.y = 1f;
+            }
+            if(value.x > 0 && value.x < 1f)
+			{
+                value.x = 1f;
+            }
+            if (value.x < 0 && value.x > -1f)
+            {
+                value.x = -1f;
+            }
+            dir.y = value.y;
+            dir.x = value.x;
+        }
+	}
+
+
+	bool active = false;
 
     private Rigidbody2D rb;
-    private float BallSpeed = 100f;
+    private float BallSpeed = 2f;
     private AudioClip sound;
 
     public static int damageBall = 1;
@@ -29,9 +60,10 @@ public class MoveBall : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !active)
         {
-            dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            Svdir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            Debug.Log(Svdir);
             active = true;
-            rb.AddForce(dir * BallSpeed);
+            rb.velocity = Svdir * BallSpeed;
         }
     }
 
@@ -39,14 +71,7 @@ public class MoveBall : MonoBehaviour
     {
         if (collision.gameObject.name == "Board")
         {
-            if(Random.Range(1,3) == 1)
-			{
-                rb.velocity = new Vector2(gameObject.transform.position.x * -1f, gameObject.transform.position.y);
-            }
-            else
-			{
-                rb.velocity = new Vector2(gameObject.transform.position.x * 1f, gameObject.transform.position.y);
-            }
+             rb.velocity = -1 * rb.velocity; 
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

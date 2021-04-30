@@ -8,7 +8,20 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     public GameObject MenuInGame;
 
-	public void  pause()
+	public void Exit()
+	{
+		SceneManager.LoadScene(1);
+		Time.timeScale = 1;
+	}
+
+	public void Restart()
+	{
+		CreateLineBlocks.lines.Clear();
+		SceneManager.LoadScene(0);
+		Time.timeScale = 1;
+	}
+
+	public  void  pause()
 	{
 		if (Time.timeScale != 0)
 		{

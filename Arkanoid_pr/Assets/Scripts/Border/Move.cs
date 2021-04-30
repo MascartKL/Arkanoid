@@ -56,7 +56,11 @@ public class Move : MonoBehaviour
 	private async void  sourceStateLenght()
 	{
         await Task.Delay(5000);
-        gameObject.transform.localScale = default_scale;
+        if(gameObject != null)
+		{
+            gameObject.transform.localScale = default_scale;
+        }
+        
     }
 
     private async void sourceStateDamage()

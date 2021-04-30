@@ -6,7 +6,7 @@ using UnityEngine;
 public class CreateLineBlocks : MonoBehaviour
  {
     public GameObject block;
-    private static List<Lines> lines = new List<Lines>();
+    public static List<Lines> lines = new List<Lines>();
     private byte maxLines = 3;
     private byte i = 0;
 

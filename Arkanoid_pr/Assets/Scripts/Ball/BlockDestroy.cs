@@ -19,10 +19,8 @@ public class BlockDestroy : MonoBehaviour
 
     public Sprite[] DamageSprites = new Sprite[3];
 
-    private void Awake()
+    private void Start()
     {
-        // bonusLenght = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/BonusLenght.prefab", typeof(GameObject));
-        //bonusLenght = Resources.Load<GameObject>("Assets/Prefabs/BonusLenght");
         destroy = Resources.Load("desroyBlock") as AudioClip;
         allDestroy = Resources.Load("AllDestroy") as AudioClip;
         hp = Random.Range(1, 4); //По идее должно стоять от 1 до 3, но в этом случае он не спавнит третий вид блоков  ¯\_(ツ)_/¯ 
@@ -38,11 +36,9 @@ public class BlockDestroy : MonoBehaviour
         {
             numberLine = 2;
         }
-    }
-    void Start()
-    {
         BlockColour();
     }
+ 
 
     
     void Update()
