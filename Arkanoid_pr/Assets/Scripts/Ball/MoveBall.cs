@@ -46,8 +46,7 @@ public class MoveBall : MonoBehaviour
 
 	private void Awake()
 	{
-        sound = Resources.Load("rebound") as AudioClip;
-        
+        sound = Resources.Load("rebound") as AudioClip;  
     }
 
 	void Start()
@@ -71,7 +70,8 @@ public class MoveBall : MonoBehaviour
     {
         if (collision.gameObject.name == "Board")
         {
-             rb.velocity = -1 * rb.velocity; 
+            Svdir = new Vector2(Random.Range(-2.5f, 2.5f), Random.Range(-2.5f, 2.5f));
+            rb.velocity = Svdir * BallSpeed;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

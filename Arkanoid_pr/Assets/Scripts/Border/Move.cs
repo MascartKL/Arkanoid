@@ -6,11 +6,15 @@ using UnityEngine;
 public class Move : MonoBehaviour
 {
     public float speed = 0.5f;
+
     public PressedButton leftButton;
     public PressedButton rightButton;
+
     private Vector3 default_scale;
     private GameObject ball;
     private AudioClip bonusLenght, bonusDamage;
+
+    public static int countHit = 0;
 
 	private void Awake()
 	{

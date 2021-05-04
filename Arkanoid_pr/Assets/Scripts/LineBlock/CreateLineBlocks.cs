@@ -7,6 +7,7 @@ public class CreateLineBlocks : MonoBehaviour
  {
     public GameObject block;
     public static List<Lines> lines = new List<Lines>();
+    private static bool createLine = false;
     private byte maxLines = 3;
     private byte i = 0;
 
@@ -14,17 +15,19 @@ public class CreateLineBlocks : MonoBehaviour
     {
         if(CheckLine())
 		{
-            Lines line = new Lines((byte)Random.Range(3, 7), 3.3f - i*0.3f, block);
-            lines.Add(line);
-            lines[lines.Count - 1].CreateLinesBlock();
-            i++;
+            CreateLine();
         }
     }
 
-    private bool CheckLine()
+    private  bool CheckLine()
     {
         if (lines.Count < maxLines)
         {
+            return true;
+        }
+        if(createLine)
+		{
+            createLine = false;
             return true;
         }
         i = 0;
@@ -41,11 +44,13 @@ public class CreateLineBlocks : MonoBehaviour
 			{
                 if(obj != null)
 				{
-                    obj.transform.position += Vector3.up * -1.0f * lines.Count * 0.1f;
+                    obj.transform.position = new Vector2(obj.transform.position.x,obj.transform.position.y - 0.3f);
+                    obj.GetComponent<BlockDestroy>().numberLine++;
                 }
 			}
 		}
-	}
+        createLine = true;
+    }
 
     public static void BlockInLinesRemove(byte numberLine, GameObject block)
 	{
@@ -55,11 +60,26 @@ public class CreateLineBlocks : MonoBehaviour
 
     private static void RemoveLine(byte numberLine)
     {
-        if (lines[numberLine].gameObjects.Count <= 2)
-		{
-            lines.Remove(lines[numberLine]);
-            OffsetLine();
+        if (lines[numberLine].gameObjects.Count == 0)
+        {
+           lines.Remove(lines[numberLine]);
         }
+    }
+
+    public static void CheckOffset(int count)
+	{
+        if(count % 2 == 0)
+		{
+            OffsetLine();
+		}
+	}
+
+    private void CreateLine()
+	{
+        Lines line = new Lines((byte)Random.Range(3, 7), 3.3f - i * 0.3f, block);
+        lines.Add(line);
+        lines[lines.Count - 1].CreateLinesBlock();
+        i++;
     }
 
 }

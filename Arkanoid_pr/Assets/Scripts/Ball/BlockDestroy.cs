@@ -11,7 +11,7 @@ public class BlockDestroy : MonoBehaviour
     private AudioClip destroy, allDestroy;
 
 
-    public static byte numberLine;
+    public byte numberLine;
 
     public GameObject ball;
 
@@ -24,18 +24,7 @@ public class BlockDestroy : MonoBehaviour
         destroy = Resources.Load("desroyBlock") as AudioClip;
         allDestroy = Resources.Load("AllDestroy") as AudioClip;
         hp = Random.Range(1, 4); //По идее должно стоять от 1 до 3, но в этом случае он не спавнит третий вид блоков  ¯\_(ツ)_/¯ 
-        if(gameObject.transform.position.y == 3.3f)
-		{
-            numberLine = 0;
-		}
-        if (gameObject.transform.position.y == 3.0f)
-        {
-            numberLine = 1;
-        }
-        else 
-        {
-            numberLine = 2;
-        }
+        numberLine = (byte)Mathf.Round(3.3f % gameObject.transform.position.y / 0.3f);
         BlockColour();
     }
  
@@ -46,7 +35,7 @@ public class BlockDestroy : MonoBehaviour
         BlockStatus();
         if(hp <= 0)
 		{
-            CreateLineBlocks.BlockInLinesRemove(numberLine, this.gameObject);
+            CreateLineBlocks.BlockInLinesRemove(numberLine, gameObject);
 
             TextView txtView = new TextView(BlockValue.ToString(),gameObject.transform.position);
             txtView.moveText();
@@ -81,11 +70,13 @@ public class BlockDestroy : MonoBehaviour
 			{
                 collision.gameObject.GetComponent<AudioSource>().volume = 1f;
                 collision.gameObject.GetComponent<AudioSource>().PlayOneShot(destroy);
+                CreateLineBlocks.CheckOffset(Move.countHit++);
             }
             else
 			{
                 collision.gameObject.GetComponent<AudioSource>().volume = 0.7f;
                 collision.gameObject.GetComponent<AudioSource>().PlayOneShot(allDestroy);
+                CreateLineBlocks.CheckOffset(Move.countHit++);
             }
         }
     }
