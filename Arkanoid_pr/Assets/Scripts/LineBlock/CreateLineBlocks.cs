@@ -9,9 +9,9 @@ public class CreateLineBlocks : MonoBehaviour
     public static List<Lines> lines = new List<Lines>();
     private static bool createLine = false;
     private byte maxLines = 3;
-    private byte i = 0;
+    private byte i;
 
-    void Update()
+	private void Update()
     {
         if(CheckLine())
 		{
@@ -25,12 +25,15 @@ public class CreateLineBlocks : MonoBehaviour
         {
             return true;
         }
+
         if(createLine)
 		{
             createLine = false;
             return true;
         }
-        i = 0;
+
+         i = 0;
+
         return false;
 	}
 
@@ -68,7 +71,7 @@ public class CreateLineBlocks : MonoBehaviour
 
     public static void CheckOffset(int count)
 	{
-        if(count % 2 == 0)
+        if(count % 10 == 0)
 		{
             OffsetLine();
 		}
@@ -77,9 +80,10 @@ public class CreateLineBlocks : MonoBehaviour
     private void CreateLine()
 	{
         Lines line = new Lines((byte)Random.Range(3, 7), 3.3f - i * 0.3f, block);
+        i++;
         lines.Add(line);
         lines[lines.Count - 1].CreateLinesBlock();
-        i++;
+        Debug.Log(i);
     }
 
 }

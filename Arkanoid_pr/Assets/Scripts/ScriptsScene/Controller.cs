@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Controller : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     public GameObject MenuInGame;
+	public GameObject MenuSetting;
+	private bool change = false;
+	public Button btn;
+	public Sprite sp1;
+	public Sprite sp2;
 
 	public void Exit()
 	{
@@ -16,6 +22,7 @@ public class Controller : MonoBehaviour
 
 	public void Restart()
 	{
+		Move.countHit = 0;
 		CreateLineBlocks.lines.Clear();
 		SceneManager.LoadScene(0);
 		Time.timeScale = 1;
@@ -34,9 +41,32 @@ public class Controller : MonoBehaviour
 		{
 			Time.timeScale = 1;
 			MenuInGame.SetActive(false);
+			MenuSetting.SetActive(false);
 			return;
 		}
+	}
 
-		return;
+	public void settingsBtns()
+	{
+		
+			MenuInGame.SetActive(false);
+			MenuSetting.SetActive(true);
+		
+	}
+
+	public void btnSoundPressed()
+	{
+		if(!change)
+		{
+			btn.image.sprite = sp1;
+			AudioListener.volume = 0;
+			change = true;
+		}
+		else
+		{
+			btn.image.sprite = sp2;
+			AudioListener.volume = 1;
+			change = false;
+		}
 	}
 }
