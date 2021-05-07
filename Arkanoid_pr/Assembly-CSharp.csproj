@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\ScriptsScene\GameStopButton.cs" />
     <Compile Include="Assets\Scripts\Ball\BlockDestroy.cs" />
     <Compile Include="Assets\Scripts\LineBlock\CreateLineBlocks.cs" />
+    <Compile Include="Assets\Scripts\UI\Levels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
