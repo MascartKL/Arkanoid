@@ -9,6 +9,11 @@ public class Score : MonoBehaviour
     public GameObject ScoreText;
     private double tmpscore = 0;
 
+    private void Start()
+    {
+        score = 0;
+    }
+
     void Update()
     {
         if ((tmpscore == 1 || tmpscore > 1) && score > 1)

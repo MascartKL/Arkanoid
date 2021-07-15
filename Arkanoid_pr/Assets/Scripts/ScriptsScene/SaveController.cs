@@ -31,19 +31,13 @@ public class SaveController : MonoBehaviour
         {
             if (levelComplete < sceneindex)
                 PlayerPrefs.SetInt("LevelComplete", sceneindex);
-            //Invoke("NextLevel", 1f);
 
             LevelCompl();
 
             ScoreSave.SaveScore();
-            Debug.Log("ok");
+
             LevelComplete.SetActive(true);
             Time.timeScale = 0;
-
-            
-            
-
-            //Invoke("NullScore", 1f);
         }
     }
 

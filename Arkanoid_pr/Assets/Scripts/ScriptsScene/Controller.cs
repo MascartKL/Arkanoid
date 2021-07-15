@@ -9,7 +9,9 @@ public class Controller : MonoBehaviour
     public GameObject MenuInGame;
 	public GameObject MenuSetting;
     public GameObject MenuLevel;
-	private bool change = false;
+    public GameObject Shop;
+    public GameObject Inventory;
+    private bool change = false;
 	public Button btn;
 	public Sprite sp1;
 	public Sprite sp2;
@@ -118,4 +120,25 @@ public class Controller : MonoBehaviour
 
         }
     }
+    public void ToShop()
+    {
+        Shop.SetActive(true);
+        MenuInGame.SetActive(false);
+    }
+    public void MenuFromShop()
+    {
+        Shop.SetActive(false);
+        MenuInGame.SetActive(true);
+    }
+    public void ToInv()
+    {
+        Inventory.SetActive(true);
+        MenuInGame.SetActive(false);
+    }
+    public void MenuFromInv()
+    {
+        Inventory.SetActive(false);
+        MenuInGame.SetActive(true);
+    }
+
 }

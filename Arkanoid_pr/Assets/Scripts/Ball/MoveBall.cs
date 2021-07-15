@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoveBall : MonoBehaviour
 {
+    public Sprite[] ballSprite = new Sprite[3];
     private Vector2 dir;
 
 	private Vector2 Svdir
@@ -53,6 +54,30 @@ public class MoveBall : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         damageBall = 1;
+
+        switch(LevelScore.numBallCh)
+        {
+            case 1:
+                {
+                    gameObject.GetComponent<SpriteRenderer>().sprite = ballSprite[0];
+                    break;
+                }
+            case 2:
+                {
+                    gameObject.GetComponent<SpriteRenderer>().sprite = ballSprite[1];
+                    break;
+                }
+            case 3:
+                {
+                    gameObject.GetComponent<SpriteRenderer>().sprite = ballSprite[2];
+                    break;
+                }
+            default:
+                {
+                    gameObject.GetComponent<SpriteRenderer>().sprite = ballSprite[0];
+                    break;
+                }
+        }
     }
 
 

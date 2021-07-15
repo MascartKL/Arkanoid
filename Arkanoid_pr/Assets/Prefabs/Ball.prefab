@@ -136,6 +136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95af0e15a012c114895c54dfc3fa0236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballSprite:
+  - {fileID: 2347807252193122458, guid: 65e3a044eb0a73d40a557747249650ef, type: 3}
+  - {fileID: 21300000, guid: dc94c35ea867aea4ba03838d1fc31240, type: 3}
+  - {fileID: 21300000, guid: 36f184345f011e2408bcb98c67cab02a, type: 3}
 --- !u!82 &5428987618016331428
 AudioSource:
   m_ObjectHideFlags: 0
