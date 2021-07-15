@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BlockDestroy : MonoBehaviour
 {
-    private int hp;
+    [SerializeField]
+    private int  hp;
     private int BlockValue;
     private AudioClip destroy, allDestroy;
 
+    public static int blocks;
 
     public byte numberLine;
 
@@ -19,13 +22,19 @@ public class BlockDestroy : MonoBehaviour
 
     public Sprite[] DamageSprites = new Sprite[3];
 
+
     private void Start()
     {
         destroy = Resources.Load("desroyBlock") as AudioClip;
         allDestroy = Resources.Load("AllDestroy") as AudioClip;
-        hp = Random.Range(1, 4); //По идее должно стоять от 1 до 3, но в этом случае он не спавнит третий вид блоков  ¯\_(ツ)_/¯ 
+        if (SceneManager.GetActiveScene().name == "SampleScene") //чтобы на уровнях спавнились блоки определнного цвета
+        {
+            hp = Random.Range(1, 4); //По идее должно стоять от 1 до 3, но в этом случае он не спавнит третий вид блоков  ¯\_(ツ)_/¯ 
+        }
         numberLine = (byte)Mathf.Round(3.3f % gameObject.transform.position.y / 0.3f);
         BlockColour();
+
+        blocks = GameObject.FindGameObjectsWithTag("Block").Length - 1;
     }
  
 
@@ -35,7 +44,10 @@ public class BlockDestroy : MonoBehaviour
         BlockStatus();
         if(hp <= 0)
 		{
-            CreateLineBlocks.BlockInLinesRemove(numberLine, gameObject);
+            if (SceneManager.GetActiveScene().name == "SampleScene")// см. выше
+            {
+                CreateLineBlocks.BlockInLinesRemove(numberLine, gameObject);
+            }
 
             TextView txtView = new TextView(BlockValue.ToString(),gameObject.transform.position);
             txtView.moveText();
@@ -43,8 +55,11 @@ public class BlockDestroy : MonoBehaviour
             Score.score += BlockValue;
 
             spavnBonus();
-
+            
             Destroy(gameObject);
+
+            blocks = GameObject.FindGameObjectsWithTag("Block").Length - 1;
+            Debug.Log(blocks);           
         }
     }
 

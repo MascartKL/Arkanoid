@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6610370514776216632}
   m_Layer: 0
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,6 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947be3d08244b124c8457dda3e6bb68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
+  numberLine: 0
   ball: {fileID: 0}
   MainSprites:
   - {fileID: 690696643596080731, guid: 65e3a044eb0a73d40a557747249650ef, type: 3}

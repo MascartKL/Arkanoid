@@ -13,6 +13,7 @@ public class DeathZone : MonoBehaviour
             Destroy(collision.gameObject);
             Lose.SetActive(true);
             Time.timeScale = 0;
+            ScoreSave.InfSaveScore();
         }
         if(collision.gameObject.tag == "Bonus")
 		{

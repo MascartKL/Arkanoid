@@ -52,6 +52,7 @@ public class MoveBall : MonoBehaviour
 	void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        damageBall = 1;
     }
 
 

@@ -9,7 +9,7 @@ public class Menu : MonoBehaviour
     {
         Move.countHit = 0;
         CreateLineBlocks.lines.Clear();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         Time.timeScale = 1;
     }
 

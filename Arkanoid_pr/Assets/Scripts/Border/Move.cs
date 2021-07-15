@@ -17,7 +17,8 @@ public class Move : MonoBehaviour
     public static int countHit = 0;
 
 	private void Awake()
-	{
+    {
+        Time.timeScale = 1;
         bonusDamage = Resources.Load("BallDamage") as AudioClip;
         bonusLenght = Resources.Load("BoardLenght") as AudioClip;
 
