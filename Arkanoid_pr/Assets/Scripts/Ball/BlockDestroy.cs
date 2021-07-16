@@ -65,15 +65,21 @@ public class BlockDestroy : MonoBehaviour
 
    private void spavnBonus()
 	{
-		if (Random.Range(1, 6) == 3)
-		{
-			Instantiate(Resources.Load("BonusLenght"), gameObject.transform.position, Quaternion.identity);
-	    }
+        if (GameObject.FindGameObjectsWithTag("BonusLenght").Length == 0)
+        {
+            if (Random.Range(1, 6) == 3)
+            {
+                Instantiate(Resources.Load("BonusLenght"), gameObject.transform.position, Quaternion.identity);
+            }
+        }
 
-		if (Random.Range(1, 10) == 5)
-		{
-			Instantiate(Resources.Load("BonusDamage"), gameObject.transform.position, Quaternion.identity);
-		}
+        if (GameObject.FindGameObjectsWithTag("BonusDamage").Length == 0)
+        {
+            if (Random.Range(1, 10) == 5)
+            {
+                Instantiate(Resources.Load("BonusDamage"), gameObject.transform.position, Quaternion.identity);
+            }
+        }
 	}
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -109,7 +115,7 @@ public class BlockDestroy : MonoBehaviour
 
                 case 1:
                     gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[2];
-                    Debug.Log("test");
+                    //Debug.Log("test");
                     break;
                 case 2:
                     gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[1];

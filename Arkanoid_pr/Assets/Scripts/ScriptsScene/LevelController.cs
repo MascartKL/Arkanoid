@@ -46,6 +46,7 @@ public class LevelController : MonoBehaviour
         {
             btlevel[i].interactable = false;
         }
-            PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene(0);
     }
 }

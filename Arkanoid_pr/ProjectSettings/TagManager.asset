@@ -9,6 +9,8 @@ TagManager:
   - Value
   - Menu
   - Block
+  - BonusDamage
+  - BonusLenght
   layers:
   - Default
   - TransparentFX

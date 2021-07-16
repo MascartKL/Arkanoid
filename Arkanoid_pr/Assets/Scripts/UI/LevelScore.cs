@@ -27,9 +27,15 @@ public class LevelScore : MonoBehaviour
 
     static public int numBallCh;
 
-
     public GameObject[] levelStars = new GameObject[15];
 
+    private AudioClip soundBuy, soundAmogus;
+
+    private void Awake()
+    {
+        soundBuy = Resources.Load("SBuy") as AudioClip;
+        soundAmogus = Resources.Load("Амогус") as AudioClip;
+    }
     private void Start()
     {
         starnumb = 0;
@@ -74,15 +80,16 @@ public class LevelScore : MonoBehaviour
 
     public void BuyBall2()
     {
-        if (starnumb >= 5)
+        if (starnumb >= 2)
         {
-            starnumb -= 5;
+            starnumb -= 2;
             StarNumberText.GetComponent<Text>().text = starnumb.ToString();
             BuyButBall2.interactable = false;
             isBuyBall2 = true;
             
             PlayerPrefs.SetInt("isBuyBall2", 1);
             isBuy2();
+            gameObject.GetComponent<AudioSource>().PlayOneShot(soundBuy);
         }
         else
         {
@@ -93,15 +100,16 @@ public class LevelScore : MonoBehaviour
 
     public void BuyBall3()
     {
-        if (starnumb >= 7)
+        if (starnumb >= 3)
         {
-            starnumb -= 7;
+            starnumb -= 3;
             StarNumberText.GetComponent<Text>().text = starnumb.ToString();
             BuyButBall3.interactable = false;
             isBuyBall3 = true;
             
             PlayerPrefs.SetInt("isBuyBall3", 1);
             isBuy3();
+            gameObject.GetComponent<AudioSource>().PlayOneShot(soundBuy);
         }
         else
         {
@@ -142,6 +150,7 @@ public class LevelScore : MonoBehaviour
     public void InvBall3B()
     {
         numBallCh = 3;
+        gameObject.GetComponent<AudioSource>().PlayOneShot(soundAmogus);
     }
 
 
@@ -239,9 +248,9 @@ public class LevelScore : MonoBehaviour
         }
 
         if (PlayerPrefs.GetInt("isBuyBall2") == 1)
-            starnumb -= 5;
+            starnumb -= 2;
         if (PlayerPrefs.GetInt("isBuyBall3") == 1)
-            starnumb -= 7;
+            starnumb -= 3;
     }
 
 }

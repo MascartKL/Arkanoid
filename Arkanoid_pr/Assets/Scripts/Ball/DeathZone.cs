@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 public class DeathZone : MonoBehaviour
 {
     public GameObject Lose;
+    private AudioClip soundLose;
+
+    private void Awake()
+    {
+        soundLose = Resources.Load("SGameOver") as AudioClip;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Ball")
@@ -14,9 +21,10 @@ public class DeathZone : MonoBehaviour
             Lose.SetActive(true);
             Time.timeScale = 0;
             ScoreSave.InfSaveScore();
+            gameObject.GetComponent<AudioSource>().PlayOneShot(soundLose);
         }
-        if(collision.gameObject.tag == "Bonus")
-		{
+        if (collision.gameObject.tag == "BonusDamage" || collision.gameObject.tag == "BonusLenght")
+        {
             Destroy(collision.gameObject);
         }
     }
