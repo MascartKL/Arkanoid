@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MoveBall : MonoBehaviour
 {
@@ -40,7 +41,7 @@ public class MoveBall : MonoBehaviour
 	bool active = false;
 
     private Rigidbody2D rb;
-    private float BallSpeed = 2f;
+    static  public float BallSpeed = 2.0f;
     private AudioClip sound;
 
     public static int damageBall = 1;
@@ -53,7 +54,9 @@ public class MoveBall : MonoBehaviour
 	void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        damageBall = 1;
+        damageBall = PlayerPrefs.GetInt("upDamage") +1;
+        BallSpeed = 2.0f;
+        Debug.Log("damage = " + damageBall);
 
         switch(LevelScore.numBallCh)
         {
@@ -90,13 +93,21 @@ public class MoveBall : MonoBehaviour
             active = true;
             rb.velocity = Svdir * BallSpeed;
         }
+        /*if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            if (Score.score <= 100)
+                BallSpeed += Score.score / 10;
+            else if (Score.score > 100)
+                BallSpeed += Score.score / 100;
+        }*/
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Board")
         {
-            Svdir = new Vector2(Random.Range(-2.5f, 2.5f), Random.Range(-2.5f, 2.5f));
+            Svdir = new Vector2(Random.Range(2.5f, 2.5f), Random.Range(2.5f, 2.5f));
             rb.velocity = Svdir * BallSpeed;
         }
     }

@@ -16,7 +16,9 @@ public class Move : MonoBehaviour
 
     public static int countHit = 0;
 
-	private void Awake()
+    static public bool isBonusScore = false;
+
+    private void Awake()
     {
         Time.timeScale = 1;
         bonusDamage = Resources.Load("BallDamage") as AudioClip;
@@ -55,7 +57,14 @@ public class Move : MonoBehaviour
             ball.GetComponent<SpriteRenderer>().color = Color.cyan;
             sourceStateDamage();
         }
-        
+        if (collision.gameObject.name == "BonusScore(Clone)")
+        {
+            Destroy(collision.gameObject);
+            isBonusScore = true;
+            ball.GetComponent<SpriteRenderer>().color = Color.black;
+            sourceStateScore();
+        }
+
     }
 
 	private async void  sourceStateLenght()
@@ -73,5 +82,13 @@ public class Move : MonoBehaviour
         await Task.Delay(10000);
         ball.GetComponent<SpriteRenderer>().color = Color.white;
         MoveBall.damageBall--;
+    }
+
+    private async void sourceStateScore()
+    {
+        await Task.Delay(5000);
+        ball.GetComponent<SpriteRenderer>().color = Color.white;
+        isBonusScore = false;
+
     }
 }

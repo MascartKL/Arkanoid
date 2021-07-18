@@ -23,7 +23,7 @@ public class DeathZone : MonoBehaviour
             ScoreSave.InfSaveScore();
             gameObject.GetComponent<AudioSource>().PlayOneShot(soundLose);
         }
-        if (collision.gameObject.tag == "BonusDamage" || collision.gameObject.tag == "BonusLenght")
+        if (collision.gameObject.tag == "BonusDamage" || collision.gameObject.tag == "BonusLenght" || collision.gameObject.tag == "BonusScore")
         {
             Destroy(collision.gameObject);
         }

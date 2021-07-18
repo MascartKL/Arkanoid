@@ -23,6 +23,8 @@ public class BlockDestroy : MonoBehaviour
     public Sprite[] DamageSprites = new Sprite[3];
 
 
+
+
     private void Start()
     {
         destroy = Resources.Load("desroyBlock") as AudioClip;
@@ -49,14 +51,33 @@ public class BlockDestroy : MonoBehaviour
                 CreateLineBlocks.BlockInLinesRemove(numberLine, gameObject);
             }
 
-            TextView txtView = new TextView(BlockValue.ToString(),gameObject.transform.position);
-            txtView.moveText();
-
-            Score.score += BlockValue;
+            if(Move.isBonusScore == true)
+            {
+                TextView txtView = new TextView((BlockValue * 2).ToString(), gameObject.transform.position);
+                txtView.moveText();
+                Score.score += BlockValue * 2;
+            }
+            else
+            {
+                TextView txtView = new TextView(BlockValue.ToString(), gameObject.transform.position);
+                txtView.moveText();
+                Score.score += BlockValue;
+            }
 
             spavnBonus();
             
             Destroy(gameObject);
+
+            if(SceneManager.GetActiveScene().buildIndex == 1 && Score.score % 10 == 0)
+            {
+                if (Score.score <= 100)
+                {
+                    MoveBall.BallSpeed += 0.1f;            //Score.score / 20;
+                    Debug.Log("move is " + MoveBall.BallSpeed);
+                }
+                else
+                    MoveBall.BallSpeed += 0.05f;            //Score.score / 1000;
+            }
 
             blocks = GameObject.FindGameObjectsWithTag("Block").Length - 1;
             Debug.Log(blocks);           
@@ -80,7 +101,14 @@ public class BlockDestroy : MonoBehaviour
                 Instantiate(Resources.Load("BonusDamage"), gameObject.transform.position, Quaternion.identity);
             }
         }
-	}
+        if (GameObject.FindGameObjectsWithTag("BonusScore").Length == 0)
+        {
+            if (Random.Range(1, 12) == 5)
+            {
+                Instantiate(Resources.Load("BonusScore"), gameObject.transform.position, Quaternion.identity);
+            }
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
 	{

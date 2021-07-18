@@ -11,6 +11,7 @@ TagManager:
   - Block
   - BonusDamage
   - BonusLenght
+  - BonusScore
   layers:
   - Default
   - TransparentFX

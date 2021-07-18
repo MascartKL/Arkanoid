@@ -31,6 +31,15 @@ public class LevelScore : MonoBehaviour
 
     private AudioClip soundBuy, soundAmogus;
 
+    static public int numUpDamage = 0;
+    static public int damageUpcost = 10;
+    public GameObject costUpDamageText;
+
+    public Button control1;
+    public Button control2;
+
+    static public int chcontrol = 1;
+
     private void Awake()
     {
         soundBuy = Resources.Load("SBuy") as AudioClip;
@@ -38,10 +47,13 @@ public class LevelScore : MonoBehaviour
     }
     private void Start()
     {
-        starnumb = 0;
+        starnumb = 30;
 
         if (numBallCh == null)
             numBallCh = 1;
+
+        if (PlayerPrefs.GetInt("chcontrol") == 0)
+            PlayerPrefs.SetInt("chcontrol", 1);
 
         UpdateScore();
 
@@ -76,6 +88,27 @@ public class LevelScore : MonoBehaviour
             BuyButBall3.interactable = true;
         }
 
+
+        if (PlayerPrefs.GetInt("upDamageCost") != 0)
+            damageUpcost = PlayerPrefs.GetInt("upDamageCost");
+        else
+            damageUpcost = 10;
+
+        costUpDamageText.GetComponent<Text>().text = "X" + damageUpcost.ToString();
+
+        switch(PlayerPrefs.GetInt("chcontrol"))
+        {
+            case 1:
+                {
+                    control1.interactable = false;
+                    break;
+                }
+            case 2:
+                {
+                    control2.interactable = false;
+                    break;
+                }
+        }
     }
 
     public void BuyBall2()
@@ -152,7 +185,40 @@ public class LevelScore : MonoBehaviour
         numBallCh = 3;
         gameObject.GetComponent<AudioSource>().PlayOneShot(soundAmogus);
     }
+    public void upDamage()
+    {
+        if (starnumb >= damageUpcost)
+        {
+            numUpDamage += 1;
+            PlayerPrefs.SetInt("upDamage", numUpDamage);
+            numUpDamage = PlayerPrefs.GetInt("upDamage");
+            starnumb -= damageUpcost;
+            PlayerPrefs.SetInt("upDamageCost", damageUpcost + 5);
+            damageUpcost = PlayerPrefs.GetInt("upDamageCost");
 
+            StarNumberText.GetComponent<Text>().text = starnumb.ToString();
+            costUpDamageText.GetComponent<Text>().text = "X" + damageUpcost.ToString();
+        }
+        else
+        {
+            LowStarIm.SetActive(true);
+            Invoke("LowStarOff", 1f);
+        }
+    }
+    public void Control1B()
+    {
+        control1.interactable = false;
+        control2.interactable = true;
+        //chcontrol = 1;
+        PlayerPrefs.SetInt("chcontrol", 1);
+    }
+    public void Control2B()
+    {
+        control1.interactable = true;
+        control2.interactable = false;
+        //chcontrol = 2;
+        PlayerPrefs.SetInt("chcontrol", 2);
+    }
 
     public void UpdateScore()
     {
