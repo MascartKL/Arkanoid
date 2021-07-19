@@ -11,7 +11,7 @@ public class Score : MonoBehaviour
 
     private void Start()
     {
-        score = 0;
+        score = 95;
     }
 
     void Update()

@@ -22,16 +22,24 @@ public class BlockDestroy : MonoBehaviour
 
     public Sprite[] DamageSprites = new Sprite[3];
 
+    static public int lowLimitHP = 1;
+    static public int upLimitHP = 4;
+    static private int hpupnum;
+
 
 
 
     private void Start()
     {
+        hpupnum = 0;
+        lowLimitHP = 1;
+        upLimitHP = 4;
         destroy = Resources.Load("desroyBlock") as AudioClip;
         allDestroy = Resources.Load("AllDestroy") as AudioClip;
         if (SceneManager.GetActiveScene().name == "SampleScene") //чтобы на уровнях спавнились блоки определнного цвета
         {
-            hp = Random.Range(1, 4); //По идее должно стоять от 1 до 3, но в этом случае он не спавнит третий вид блоков  ¯\_(ツ)_/¯ 
+            //hp = Random.Range(1, 4); //По идее должно стоять от 1 до 3, но в этом случае он не спавнит третий вид блоков  ¯\_(ツ)_/¯ 
+            hp = Random.Range(lowLimitHP, upLimitHP);
         }
         numberLine = (byte)Mathf.Round(3.3f % gameObject.transform.position.y / 0.3f);
         BlockColour();
@@ -79,7 +87,36 @@ public class BlockDestroy : MonoBehaviour
                     MoveBall.BallSpeed += 0.05f;            //Score.score / 1000;
             }
 
-            blocks = GameObject.FindGameObjectsWithTag("Block").Length - 1;
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                if((Score.score >= 100) && (Score.score < 200) && (hpupnum == 0))
+                {
+                    lowLimitHP += 1;
+                    Debug.Log("test is ok");
+                    hpupnum += 1;
+                    Debug.Log("hpupnum = " + hpupnum);
+                    //upLimitHP += 1;
+                }
+                else if(Score.score >= 200 && Score.score < 300 && hpupnum == 1)
+                {
+                    lowLimitHP += 1;
+                    hpupnum += 1;
+                }
+                else if(Score.score >= 300 && Score.score < 400 && hpupnum == 2)
+                {
+                    upLimitHP += 1;
+                    hpupnum += 1;
+                }
+                else if (Score.score >= 400 && Score.score < 500 && hpupnum == 3)
+                {
+                    lowLimitHP += 1;
+                }
+
+
+
+            }
+
+                blocks = GameObject.FindGameObjectsWithTag("Block").Length - 1;
             Debug.Log(blocks);           
         }
     }
@@ -143,7 +180,6 @@ public class BlockDestroy : MonoBehaviour
 
                 case 1:
                     gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[2];
-                    //Debug.Log("test");
                     break;
                 case 2:
                     gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[1];

@@ -19,6 +19,7 @@ public class LevelScore : MonoBehaviour
     public Button BuyButBall3;
     public static bool isBuyBall2 = false;
     public static bool isBuyBall3 = false;
+    public Button invBall1;
     public Button invBall2;
     public Button invBall3;
 
@@ -29,7 +30,7 @@ public class LevelScore : MonoBehaviour
 
     public GameObject[] levelStars = new GameObject[15];
 
-    private AudioClip soundBuy, soundAmogus;
+    private AudioClip soundBuy, soundAmogus, football, ball1_s;
 
     static public int numUpDamage = 0;
     static public int damageUpcost = 10;
@@ -44,6 +45,8 @@ public class LevelScore : MonoBehaviour
     {
         soundBuy = Resources.Load("SBuy") as AudioClip;
         soundAmogus = Resources.Load("Амогус") as AudioClip;
+        football = Resources.Load("football_sound") as AudioClip;
+        ball1_s = Resources.Load("ball1_sound") as AudioClip;
     }
     private void Start()
     {
@@ -175,15 +178,26 @@ public class LevelScore : MonoBehaviour
     public void InvBall1B()
     {
         numBallCh = 1;
+        gameObject.GetComponent<AudioSource>().PlayOneShot(ball1_s);
+        invBall1.interactable = false;
+        invBall2.interactable = true;
+        invBall3.interactable = true;
     }
     public void InvBall2B()
     {
         numBallCh = 2;
+        gameObject.GetComponent<AudioSource>().PlayOneShot(football);
+        invBall1.interactable = true;
+        invBall2.interactable = false;
+        invBall3.interactable = true;
     }
     public void InvBall3B()
     {
         numBallCh = 3;
         gameObject.GetComponent<AudioSource>().PlayOneShot(soundAmogus);
+        invBall1.interactable = true;
+        invBall2.interactable = true;
+        invBall3.interactable = false;
     }
     public void upDamage()
     {
@@ -209,14 +223,12 @@ public class LevelScore : MonoBehaviour
     {
         control1.interactable = false;
         control2.interactable = true;
-        //chcontrol = 1;
         PlayerPrefs.SetInt("chcontrol", 1);
     }
     public void Control2B()
     {
         control1.interactable = true;
         control2.interactable = false;
-        //chcontrol = 2;
         PlayerPrefs.SetInt("chcontrol", 2);
     }
 
