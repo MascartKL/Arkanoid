@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\UI\ScoreSave.cs" />
     <Compile Include="Assets\Scripts\Ball\BlockDestroy.cs" />
     <Compile Include="Assets\Scripts\LineBlock\CreateLineBlocks.cs" />
+    <Compile Include="Assets\Scripts\Border\PlayerInput.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

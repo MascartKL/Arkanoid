@@ -18,6 +18,14 @@ public class Move : MonoBehaviour
 
     static public bool isBonusScore = false;
 
+    private Rigidbody2D _rigibody2d;
+
+    private float _moveX = 0f;
+    private float _speed = 7f;
+    private float BorderPositionLeft = -1.5f;
+    private float BorderPositionRight = 1.5f;
+    private SpriteRenderer BorderSprite;
+
     private void Awake()
     {
         Time.timeScale = 1;
@@ -26,6 +34,9 @@ public class Move : MonoBehaviour
 
         ball = GameObject.Find("Ball");
         default_scale = gameObject.transform.localScale;
+
+        _rigibody2d = GetComponent<Rigidbody2D>();
+        BorderSprite = GetComponent<SpriteRenderer>();
 	}
 
 	void Update()
@@ -40,7 +51,22 @@ public class Move : MonoBehaviour
         }
     }
 
-	private void OnTriggerEnter2D(Collider2D collision)
+    private void FixedUpdate()
+    {
+        if (PlayerPrefs.GetInt("chcontrol") == 2)
+        {
+             //if ((transform.position.x >= -1.3f && _moveX > 0 )|| (transform.position.x <= 1.3f && _moveX < 0))
+        
+            float positionX = _rigibody2d.position.x + _moveX * _speed * Time.fixedDeltaTime;
+            positionX = Mathf.Clamp(positionX, BorderPositionLeft + (BorderSprite.size.x / 2), BorderPositionRight - (BorderSprite.size.x / 2));
+            _rigibody2d.MovePosition(new Vector2(positionX, _rigibody2d.position.y));
+        
+
+           
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
 	{
         if (collision.gameObject.name == "BonusLenght(Clone)" && gameObject.transform.localScale == default_scale)
         {
@@ -90,5 +116,20 @@ public class Move : MonoBehaviour
         ball.GetComponent<SpriteRenderer>().color = Color.white;
         isBonusScore = false;
 
+    }
+
+    private void OnEnable()
+    {
+        PlayerInput.OnMove += move;
+    }
+
+    private void OnDisable()
+    {
+        PlayerInput.OnMove -= move;
+    }
+
+    private void move(float moveX)
+    {
+        _moveX = moveX;
     }
 }

@@ -10,7 +10,7 @@ public class NextLevelTrig : MonoBehaviour
     }
     private void Update()
     {
-        if (BlockDestroy.blocks <= 0)
+        if (BlockDestroy.blocks <= 10)
             SaveController.instance.isEndGame();
     }
 }

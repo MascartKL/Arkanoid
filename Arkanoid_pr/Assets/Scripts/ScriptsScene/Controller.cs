@@ -17,7 +17,7 @@ public class Controller : MonoBehaviour
 	public Sprite sp2;
 
     public GameObject control1;
-    public GameObject control2;
+   // public GameObject control2;
 
     private void Start()
     {
@@ -28,19 +28,19 @@ public class Controller : MonoBehaviour
                 case 1:
                     {
                         control1.SetActive(true);
-                        control2.SetActive(false);
+                       // control2.SetActive(false);
                         break;
                     }
                 case 2:
                     {
-                        control2.SetActive(true);
+                        //control2.SetActive(true);
                         control1.SetActive(false);
                         break;
                     }
                 default:
                     {
                         control1.SetActive(true);
-                        control2.SetActive(false);
+                       // control2.SetActive(false);
                         break;
                     }
             }
