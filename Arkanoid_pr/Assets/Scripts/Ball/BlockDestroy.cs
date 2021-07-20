@@ -18,7 +18,7 @@ public class BlockDestroy : MonoBehaviour
 
     public GameObject ball;
 
-    public Sprite[] MainSprites = new Sprite[3];
+    public Sprite[] MainSprites = new Sprite[4];
 
     public Sprite[] DamageSprites = new Sprite[3];
 
@@ -26,14 +26,14 @@ public class BlockDestroy : MonoBehaviour
     static public int upLimitHP = 4;
     static private int hpupnum;
 
-
+    private int blocktype;
 
 
     private void Start()
     {
         hpupnum = 0;
-        lowLimitHP = 1;
-        upLimitHP = 4;
+        lowLimitHP = 4;
+        upLimitHP = 7;
         destroy = Resources.Load("desroyBlock") as AudioClip;
         allDestroy = Resources.Load("AllDestroy") as AudioClip;
         if (SceneManager.GetActiveScene().name == "SampleScene") //чтобы на уровнях спавнились блоки определнного цвета
@@ -168,23 +168,86 @@ public class BlockDestroy : MonoBehaviour
     }
 
     private void BlockStatus()
-    {
-        if(gameObject.GetComponent<SpriteRenderer>().sprite == MainSprites[1] && hp==1)
+    {        
+        switch(blocktype)
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[0];
-        }
-        if (gameObject.GetComponent<SpriteRenderer>().sprite == MainSprites[2] || gameObject.GetComponent<SpriteRenderer>().sprite == DamageSprites[1])
-        {
-            switch (hp)
-            {
-
-                case 1:
-                    gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[2];
+            case 2:
+                {
+                    switch (hp)
+                    {
+                        case 2:
+                            gameObject.GetComponent<SpriteRenderer>().sprite = MainSprites[1];
+                            break;
+                        case 1:
+                            gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[0];
+                            break;
+                    }
                     break;
-                case 2:
-                    gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[1];
+                }
+            case 3:
+                {
+                    switch (hp)
+                    {
+                        case 2:
+                            gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[1];
+                            break;
+                        case 1:
+                            gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[2];
+                            break;
+                    }
                     break;
-            }
+                }
+            case 4:
+                switch (hp)
+                {
+                    case 3:
+                        gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[3];
+                        break;
+                    case 2:
+                        gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[4];
+                        break;
+                    case 1:
+                        gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[5];
+                        break;
+                }
+                break;
+            case 5:
+                switch (hp)
+                {
+                    case 4:
+                        gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[6];
+                        break;
+                    case 3:
+                        gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[7];
+                        break;
+                    case 2:
+                        gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[8];
+                        break;
+                    case 1:
+                        gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[9];
+                        break;
+                }
+                break;
+            case 6:
+                switch (hp)
+                {
+                    case 5:
+                        gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[10];
+                        break;
+                    case 4:
+                        gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[11];
+                        break;
+                    case 3:
+                        gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[12];
+                        break;
+                    case 2:
+                        gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[13];
+                        break;
+                    case 1:
+                        gameObject.GetComponent<SpriteRenderer>().sprite = DamageSprites[14];
+                        break;
+                }
+                break;
         }
     }
     private void BlockColour()
@@ -193,14 +256,37 @@ public class BlockDestroy : MonoBehaviour
         {
             case 1:
                 gameObject.GetComponent<SpriteRenderer>().sprite = MainSprites[0];
+                blocktype = 1;
                 BlockValue = 1;
                 break;
             case 2:
                 gameObject.GetComponent<SpriteRenderer>().sprite = MainSprites[1];
+                blocktype = 2;
                 BlockValue = 2;
+                break;
+            case 3:
+                gameObject.GetComponent<SpriteRenderer>().sprite = MainSprites[2];
+                blocktype = 3;
+                BlockValue = 3;
+                break;
+            case 4:
+                gameObject.GetComponent<SpriteRenderer>().sprite = MainSprites[3];
+                blocktype = 4;
+                BlockValue = 4;
+                break;
+            case 5:
+                gameObject.GetComponent<SpriteRenderer>().sprite = MainSprites[4];
+                blocktype = 5;
+                BlockValue = 5;
+                break;
+            case 6:
+                gameObject.GetComponent<SpriteRenderer>().sprite = MainSprites[5];
+                blocktype = 6;
+                BlockValue = 6;
                 break;
             default:
                 gameObject.GetComponent<SpriteRenderer>().sprite = MainSprites[2];
+                blocktype = 3;
                 BlockValue = 3;
                 break;
 
